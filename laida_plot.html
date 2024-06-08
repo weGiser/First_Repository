@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.0/files/dist/echarts.min.js"></script>
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    option = {
+  angleAxis: {
+    type: 'category',
+    data: ['民间文学','传统音乐','传统舞蹈','传统戏剧','曲艺','传统体育','游艺与杂技'
+    ,'传统美术','传统技艺','民俗']
+  },
+  radiusAxis: {},
+  polar: {},
+  series: [
+    {
+      type: 'bar',
+      data: [9,27,12,38,11,5,12,9,15],
+      coordinateSystem: 'polar',
+      name: '2006',
+      stack: '2006',
+      emphasis: {
+        focus: 'series'
+      }
+    },
+    {
+      type: 'bar',
+      data: [23,64,42,84,25,16,53,37,51],
+      coordinateSystem: 'polar',
+      name: '2008',
+      stack: '2008',
+      emphasis: {
+        focus: 'series'
+      }
+    },
+    {
+      type: 'bar',
+      data: [36,74,51,101,34,22,63,52,63],
+      coordinateSystem: 'polar',
+      name: '2011',
+      stack: '2011',
+      emphasis: {
+        focus: 'series'
+      }
+    },
+        {
+      type: 'bar',
+      data: [51,87,59,111,43,30,87,95,83],
+      coordinateSystem: 'polar',
+      name: '2014',
+      stack: '2014',
+      emphasis: {
+        focus: 'series'
+      }
+    },
+        {
+      type: 'bar',
+      data: [51,87,59,111,43,30,87,95,83],
+      coordinateSystem: 'polar',
+      name: '2021',
+      stack: '2021',
+      emphasis: {
+        focus: 'series'
+      }
+    }
+  ],
+  legend: {
+    show: true,
+    data: ['2006', '2008', '2011', '2014', '2021']
+  }
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
