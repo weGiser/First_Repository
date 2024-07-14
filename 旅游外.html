@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>国外旅游总人数和总收入</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #chart {
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.2/dist/echarts.min.js"></script>
+</head>
+<body>
+    <div id="chart"></div>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('chart'));
+        var option = {
+            title: {
+                text: '黄河流域国际旅游',
+                textStyle: {
+                    color: 'white'
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross'
+                }
+            },
+            legend: {
+              data:['国际旅游外汇总收入', '国际旅游总人数'],
+                textStyle: {
+                    color: 'white'
+                }
+            },
+            xAxis: {
+                type: 'category',
+                data: ['2000', '2002', '2004', '2006', '2008', '2010', '2012', '2014', '2016', '2018', '2020'],
+                axisLabel: { // 添加这行来改变X轴文本的颜色
+                    textStyle: {
+                        color: 'white'
+                    }
+                }
+            },
+            yAxis: [
+                {
+                    type: 'value',
+                    name: '国际旅游外汇总收入（万美元）',
+                    position: 'left',
+                    axisLabel: {
+                        formatter: '{value}',
+                        textStyle: { // 添加这行来改变Y轴文本的颜色
+                            color: 'white'
+                        }
+                    }
+                },
+                {
+                    type: 'value',
+                    name: '国际旅游总人数（万人次）',
+                    position: 'right',
+                    axisLabel: {
+                        formatter: '{value}',
+                        textStyle: { // 添加这行来改变Y轴文本的颜色
+                            color: 'white'
+                        }
+                    }
+                }
+            ],
+            series: [
+                {
+                    name: '国际旅游外汇总收入',
+                    type: 'bar',
+                    data: [53249.6, 65082.36, 71096.45, 114151.26, 146415.18, 233195.35, 325227.71, 224148.21, 249757.9693, 251962.89, 178710.7559]
+                },
+                {
+                    name: '国际旅游总人数',
+                    type: 'line',
+                    yAxisIndex: 1,
+                    data: [282.1987, 284.1832, 297.1112, 496.5857, 616.1129, 903.8587, 1254.4237, 856.6471, 1000.6656, 961.9548, 56.9459]
+                }
+            ]
+        };
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>国内旅游总人数和总收入</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #chart {
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.2/dist/echarts.min.js"></script>
+</head>
+<body>
+    <div id="chart"></div>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('chart'));
+        var option = {
+            title: {
+                text: '黄河流域国内旅游',
+                textStyle: {
+                    color: 'white'
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross'
+                }
+            },
+            legend: {
+                data: ['国内旅游总人数', '国内旅游总收入'],
+                textStyle: {
+                    color: 'white'
+                }
+            },
+            xAxis: {
+                type: 'category',
+                data: ['2000', '2002', '2004', '2006', '2008', '2010', '2012', '2014', '2016', '2018', '2020'],
+                axisLabel: { // 添加这行来改变X轴文本的颜色
+                    textStyle: {
+                        color: 'white'
+                    }
+                }
+            },
+            yAxis: [
+                {
+                    type: 'value',
+                    name: '国内旅游总收入（万元）',
+                    position: 'left',
+                    axisLabel: {
+                        formatter: '{value}',
+                        textStyle: { // 添加这行来改变Y轴文本的颜色
+                            color: 'white'
+                        }
+                    }
+                },
+                {
+                    type: 'value',
+                    name: '国内旅游总人数（万人次）',
+                    position: 'right',
+                    axisLabel: {
+                        formatter: '{value}',
+                        textStyle: { // 添加这行来改变Y轴文本的颜色
+                            color: 'white'
+                        }
+                    }
+                }
+            ],
+            series: [
+                {
+                    name: '国内旅游总收入',
+                    type: 'bar',
+                    data: [1543500, 6025811, 9594443, 20905700, 34366200, 53558600, 86654800, 80490500, 117362746, 151961200, 60784400]
+                },
+                {
+                    name: '国内旅游总人数',
+                    type: 'line',
+                    yAxisIndex: 1,
+                    data: [6472.26, 15927.37, 19075.23, 32373.7, 46238.29, 68184.34, 101617.98, 113737.69, 150743.44, 174756.96, 86882.608]
+                }
+            ]
+        };
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
