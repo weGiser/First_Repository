@@ -1,0 +1,136 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>黄河流域各市旅游发展</title>  
+    <!-- 引入 ECharts -->  
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>  
+    <style>  
+        #main {  
+            width: 1200px;  
+            height: 600px;  
+        }  
+    </style>  
+</head>  
+<body>  
+    <!-- 图表容器 -->  
+    <div id="main"></div> 
+    <script> 
+    var myChart = echarts.init(document.getElementById('main'));  
+        /*
+title: Stacked Horizontal Bar
+titleCN: 堆叠条形图
+category: bar
+difficulty: 3
+*/
+
+option = {
+    title: {  
+        text: '我国先秦-明各地战争次数',  
+        left: 'center', // 标题水平居中  
+        top: 20, // 标题距离容器顶部的距离  
+        textStyle: {  
+            color:"#fff", // 标题文字颜色  
+            fontSize: 16 // 标题文字大小  
+            }  
+        },
+   // backgroundColor:'transparent',
+   tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+         // Use axis to trigger tooltip
+         type: 'shadow' // 'shadow' as default; can also be 'line' or 'shadow'
+      }
+   },
+   legend: {
+   textStyle:{
+      color:"#fff"}
+   },
+   grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true,
+   },
+   xAxis: {
+      name:'战争次数',
+      type: 'value'
+   },
+   yAxis: {
+      name:'地区',
+      type: 'category',
+      data: ['京师','南直','山东','山西','河南','陕西','四川','湖广','江西','浙江','福建','广东','广西','云南','贵州']
+   },
+   
+   series: [
+      {
+         name: '先秦',
+         type: 'bar',
+         stack: 'total',
+         label: {
+            show: false
+            
+            
+         },
+         emphasis: {
+            focus: 'series'
+         },
+         data: [89,50,141,95,203,46,6,29,1,1,0,0,0,0,0]
+      },
+      
+      {
+         name: '秦汉',
+         type: 'bar',
+         stack: 'total',
+         label: {
+            show: false
+         },
+         emphasis: {
+            focus: 'series'
+         },
+         data: [73,65,67,35,138,201,38,34,8,4,4,2,2,11,0]
+      },
+      {
+         name: '魏晋南北朝',
+         type: 'bar',
+         stack: 'total',
+         label: {
+            show: false
+         },
+         emphasis: {
+            focus: 'series'
+         },
+         data: [116,343,103,109,271,432,82,148,37,20,3,5,0,8,0]
+      },
+      {
+         name: '隋唐五代',
+         type: 'bar',
+         stack: 'total',
+         label: {
+            show: false
+         },
+         emphasis: {
+            focus: 'series'
+         },
+         data: [228,149,85,131,150,365,107,79,14,35,13,10,13,31,1]
+      },
+      {
+         name: '宋辽金',
+         type: 'bar',
+         stack: 'total',
+         label: {
+            show: false
+         },
+         emphasis: {
+            focus: 'series'
+         },
+         data: [60,98,18,33,43,158,52,63,15,21,11,17,23,2,1]
+      },
+   ]
+};
+    myChart.setOption(option); 
+    </script>
+</body>
+</html>
