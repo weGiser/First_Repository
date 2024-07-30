@@ -1,0 +1,174 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>世界旅游</title>  
+    <!-- 引入 ECharts -->  
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>  
+    <style>  
+        #main {  
+            width: 1200px;  
+            height: 600px;  
+        }  
+    </style>  
+</head>  
+<body>  
+    <!-- 图表容器 -->  
+    <div id="main"></div> 
+    <script> 
+    var myChart = echarts.init(document.getElementById('main'));  
+    const basicColors = [
+   ['#ABDCFF', '#0396FF'],
+   ['#90F7EC', '#32CCBC'],
+   ['#FFF6B7', '#F6416C'],
+   ['#E2B0FF', '#9F44D3'],
+   ['#43CBFF', '#9708CC'],
+   ['#FCCF31', '#F55555'],
+   ['#F761A1', '#8C1BAB'],
+   ['#81FBB8', '#28C76F'],
+]
+// 生成渐变色
+function genLinearGradient(colors) {
+   let color = {
+      type: 'linear',
+      x: 0,
+      y: 0,
+      x2: 0,
+      y2: 1,
+      colorStops: [
+         {
+            offset: 0,
+            color: colors[0] // 0%处的颜色
+         },
+         {
+            offset: 1,
+            color: colors[1] // 100%处的颜色
+         }
+      ],
+      global: false
+   }
+   return color;
+}
+
+option = {
+   title: {  
+      text: '各大洲来华旅游人次(万)',  
+      left: 'center', // 标题水平居中  
+      top: 20, // 标题距离容器顶部的距离  
+      textStyle: {  
+         color: '#000', // 标题文字颜色  
+         fontSize: 15 // 标题文字大小  
+         }  
+      },
+   tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+         type: 'shadow'
+      }
+   },
+   legend: {
+      textStyle:{
+         color:"fff"
+      }
+   },
+   grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+   },
+   xAxis: [
+      {
+         type: 'category',
+         data: ['2000', '2012', '2013', '2014', '2015', '2016',  '2017','2018',]
+      }
+   ],
+   yAxis: [
+      {
+         type: 'value'
+      }
+   ],
+   series: [
+      {
+         name: 'Asia',
+         type: 'bar',
+         stack: 'Ad',
+         barWidth: 20,
+         data: [610.2,1662.2,1606,1633.1,1659.5,1786,1832.7,1913.1],
+         itemStyle: {
+            color: genLinearGradient(basicColors[0]),
+            barBorderRadius: 10
+         },
+      },
+      {
+         name: 'Africa',
+         type: 'bar',
+         stack: 'Search Engine',
+         barWidth: 20,
+         data: [6.6,52.5,55.3,59.7,58,58.9,62.9,67.4],
+         itemStyle: {
+            color: genLinearGradient(basicColors[1]),
+            barBorderRadius: 10,
+         },
+      },
+      {
+         name: 'Europe',
+         type: 'bar',
+         stack: 'Search Engine',
+         barWidth: 20,
+         data: [248.9,594.8,568.8,551.4,491.7,547.2,591.2,604.4],
+         itemStyle: {
+            color: genLinearGradient(basicColors[2]),
+            barBorderRadius: 10,
+         },
+      },
+
+      {
+         name: 'Latin America',
+         type: 'bar',
+         barWidth: 20,
+         stack: 'Search Engine',
+         data: [8.3,35.3,35.4,34.6,35,39,42.6,45.4],
+         itemStyle: {
+            color: genLinearGradient(basicColors[3]),
+            barBorderRadius: 10,
+         },
+      },
+      {
+         name: 'North America',
+         type: 'bar',
+         stack: 'Search Engine',
+         data: [113.3,282.6,277,276,276.6,299.1,311.9,333.5],
+         itemStyle: {
+            color: genLinearGradient(basicColors[4]),
+            barBorderRadius: 10,
+         },
+      },
+      {
+         name: 'Oceania',
+         type: 'bar',
+         stack: 'Search Engine',
+         data: [28.2,91.5,86.3,81,77.6,82.5,89.2,91.3],
+         itemStyle: {
+            color: genLinearGradient(basicColors[5]),
+            barBorderRadius: 10,
+         },
+      },
+      {
+         name: 'Others',
+         type: 'bar',
+         stack: 'Search Engine',
+         data: [0.7,0.2,0.2,0.2,0.2,0.2,0.2,0.2],
+         itemStyle: {
+            color: genLinearGradient(basicColors[6]),
+            barBorderRadius: 10,
+         },
+      }
+   ]
+};
+    myChart.setOption(option); 
+    </script>
+</body>
+</html>
